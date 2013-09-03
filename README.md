@@ -28,9 +28,11 @@ Steps:
   ldconfig
 8) Change Permissions
   chown -R squeezeboxserver:nogroup /var/lib/squeezeboxserver
-9) Start LMS
+9) Patch bootstrap.pm
+  patch /usr/share/perl5/Slilm/bootstrap.pm bootstrap.pm.patch
+10) Start LMS
   service start logitechmediaserver
-10) Your Server should be reachable at http://ip_of_your_server:9000
+11) Your Server should be reachable at http://ip_of_your_server:9000
 
 Enjoy it!
 
