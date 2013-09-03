@@ -137,9 +137,11 @@ fi
 # Install dir for 5.12
 BASE_512=$BUILD/5.12
 
-# Path to Perl 5.14.1
+# Path to Perl 5.14.1 and 5.14.2
 if [ -x "$HOME/perl5/perlbrew/perls/perl-5.14.1/bin/perl5.14.1" ]; then
     PERL_514=$HOME/perl5/perlbrew/perls/perl-5.14.1/bin/perl5.14.1
+elif [ -x "/usr/bin/perl5.14.2" ]; then
+    PERL_514=/usr/bin/perl5.14.2
 fi
 
 if [ $PERL_514 ]; then
