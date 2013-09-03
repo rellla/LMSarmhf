@@ -1,0 +1,16 @@
+--- bootstrap.pm.old	2012-09-28 10:03:10.135441152 +0000
++++ /usr/share/perl5/Slim/bootstrap.pm	2012-09-29 08:45:59.250569112 +0000
+@@ -114,7 +114,12 @@ sub loadModules {
+ 	# Some ARM platforms use different arch strings, just assume any arm*linux system
+ 	# can run our binaries, this will fail for some people running invalid versions of Perl
+ 	# but that's OK, they'd be broken anyway.
+-	if ( $arch =~ /^arm.*linux/ ) {
++	# Except for clever hard-float people, we'll add a fix for them first.
++
++	if ( $arch =~ /^arm.*linux-gnueabihf/ ) {
++		$arch = 'arm-linux-gnueabihf-thread-multi';
++		$arch .= '-64int' if $is64bitint;
++	} elsif ( $arch =~ /^arm.*linux/ ) {
+ 		$arch = 'arm-linux-gnueabi-thread-multi';
+ 		$arch .= '-64int' if $is64bitint;
+ 	}
