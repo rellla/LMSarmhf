@@ -4,7 +4,7 @@
 
 This repo is cloned from http://svn.slimservices.com/repos/slim/7.7/trunk/vendor.
 The downloadable packages from http://www.mysqueezebox.com/download are built for the armel architecture.
-There don't exist easy to intall binary packages for armhf platforms like the Cubieboard (http://linux-sunxi.org).
+There don't exist easy to install binary packages for armhf platforms like the Cubieboard (http://linux-sunxi.org).
 This guide lets you build Logitech Media Server and run it on armhf platforms. It was tested on a Cubieboard2(A20) and Debian Wheezy.
 
 #### Steps:
