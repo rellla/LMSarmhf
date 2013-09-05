@@ -9,28 +9,46 @@ This guide lets you build Logitech Media Server and run it on armhf platforms. I
 
 #### Steps:
 
-1. Donwload and install Logitech Media Server as usual. Use version 7.7.3
+1. Download and install Logitech Media Server as usual. Use version 7.7.3
 2. Stop the service:
-    service logitechmediaserver stop
+```
+service logitechmediaserver stop
+```
 3. Ensure to have at least the following packages installed:
-    rsync build-essentials perl # (if needed, install the right compiler your perl is built with, e.g.: gcc-4.7 libstdc++6-4.7-dev)
+```
+rsync build-essentials perl # (if needed, install the right compiler your perl is built with, e.g.: gcc-4.7 libstdc++6-4.7-dev)
+```
 4. cd to vendor/CPAN and do
-    ./buildme.sh
+```
+./buildme.sh
+```
 5. When finished, cd to faad2, flac and sox and do a
-    ./buildme-linux.sh for each.
+```
+./buildme-linux.sh for each.
+```
 6. cd back to vendor and copy the necessary files to the right place:
-    cp -r CPAN/build/arch/5.14/arm-linux-gnueabihf-thread-multi-64int /usr/share/squeezeboxserver/CPAN/arch/5.14/
-    mv $(tar zxvf faad2/faad2-build-armv7l-34091.tgz --wildcards *bin/faad) /usr/share/squeezeboxserver/Bin/arm-linux/
-    mv $(tar zxvf flac/flac-build-armv7l-34091.tgz --wildcards *bin/flac) /usr/share/squeezeboxserver/Bin/arm-linux/
-    mv $(tar zxvf sox/sox-build-armv7l-34091.tgz --wildcards *bin/sox) /usr/share/squeezeboxserver/Bin/arm-linux/
+```
+cp -r CPAN/build/arch/5.14/arm-linux-gnueabihf-thread-multi-64int /usr/share/squeezeboxserver/CPAN/arch/5.14/  
+mv $(tar zxvf faad2/faad2-build-armv7l-34091.tgz --wildcards *bin/faad) /usr/share/squeezeboxserver/Bin/arm-linux/  
+mv $(tar zxvf flac/flac-build-armv7l-34091.tgz --wildcards *bin/flac) /usr/share/squeezeboxserver/Bin/arm-linux/  
+mv $(tar zxvf sox/sox-build-armv7l-34091.tgz --wildcards *bin/sox) /usr/share/squeezeboxserver/Bin/arm-linux/
+```
 7. Link the libraries once again
-    ldconfig
+```
+ldconfig
+```
 8. Change Permissions
-    chown -R squeezeboxserver:nogroup /var/lib/squeezeboxserver
+```
+chown -R squeezeboxserver:nogroup /var/lib/squeezeboxserver
+```
 9. Patch bootstrap.pm
-    patch /usr/share/perl5/Slim/bootstrap.pm bootstrap.pm.patch
+```
+patch /usr/share/perl5/Slim/bootstrap.pm bootstrap.pm.patch
+```
 10. Start LMS
-    service start logitechmediaserver
+```
+service start logitechmediaserver
+```
 11. Your Server should be reachable at http://ip_of_your_server:9000
 
 Enjoy it!
